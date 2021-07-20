@@ -20,8 +20,8 @@ private
   end
 
   def player1_wins?
-    rules.each do |winning, losing|
-      return true if player1 == winning && player2 == losing
+    rules.each do |rule|
+      return true if player1 == rule[:win] && player2 == rule[:lose]
     end
 
     false
@@ -29,9 +29,18 @@ private
 
   def rules
     [
-      ["rock", "scissors"],
-      ["scissors", "paper"],
-      ["paper", "rock"],
+      {
+        win: "rock",
+        lose: "scissors",
+      },
+      {
+        win: "scissors",
+        lose: "paper",
+      },
+      {
+        win: "paper",
+        lose: "rock",
+      },
     ]
   end
 end
