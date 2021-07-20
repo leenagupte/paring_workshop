@@ -7,14 +7,23 @@ class Game
   end
 
   def play
-    return "draw" if player1 == player2
+    return "draw" if draw?
+    return "player1 wins" if player1_wins?
 
-    return "player1 wins" if player1 == "rock" && player2 == "scissors"
-    return "player1 wins" if player1 == "scissors" && player2 == "paper"
-    return "player1 wins" if player1 == "paper" && player2 == "rock"
+    "player2 wins"
+  end
 
-    return "player2 wins" if player2 == "rock" && player1 == "scissors"
-    return "player2 wins" if player2 == "scissors" && player1 == "paper"
-    return "player2 wins" if player2 == "paper" && player1 == "rock"
+private
+
+  def draw?
+    player1 == player2
+  end
+
+  def player1_wins?
+    return true if player1 == "rock" && player2 == "scissors"
+    return true if player1 == "scissors" && player2 == "paper"
+    return true if player1 == "paper" && player2 == "rock"
+
+    false
   end
 end
