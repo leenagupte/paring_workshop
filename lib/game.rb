@@ -20,10 +20,18 @@ private
   end
 
   def player1_wins?
-    return true if player1 == "rock" && player2 == "scissors"
-    return true if player1 == "scissors" && player2 == "paper"
-    return true if player1 == "paper" && player2 == "rock"
+    rules.each do |winning, losing|
+      return true if player1 == winning && player2 == losing
+    end
 
     false
+  end
+
+  def rules
+    [
+      ["rock", "scissors"],
+      ["scissors", "paper"],
+      ["paper", "rock"],
+    ]
   end
 end
